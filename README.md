@@ -2,6 +2,8 @@
 
 csv-dialect-fingerprint sniffs a CSV file's dialect — delimiter, quote character, line ending, encoding — from raw bytes, and reports how stable that guess is. When row shapes disagree below a threshold it answers AMBIGUOUS instead of guessing. Use it when you must auto-detect a delimiter but a wrong silent guess is worse than no answer. Confidence: High (≥80%) for the refusal behavior, based on the self-test suite.
 
+<p align="center"><img src="docs/demo.gif" alt="demo" width="720"></p>
+
 ## Problem
 
 Ingestion pipelines receive CSVs from partners, exports, and scraped sources with unknown dialects: comma vs semicolon vs tab vs pipe, `"` vs `'` quoting, `\r\n` vs `\n` vs `\r`, UTF-8 vs UTF-16 vs latin-1. Standard parsers force you to commit to a dialect up front. A wrong guess silently corrupts every row; a one-off manual peek does not scale. What is missing is not another "best guess" sniffer — it is one that also tells you *when it does not know*.
